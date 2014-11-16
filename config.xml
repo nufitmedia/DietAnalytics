@@ -8,13 +8,9 @@
 
     <name>DietAnalytics</name>
 
-    <description>
-        DietAnalytics sample application.
-    </description>
+    <description>DietAnalytics sample application.</description>
 
-    <author href="http://nufitmedia.com" email="info@nufitmedia.com">
-        Adam Wilner
-    </author>
+    <author href="http://nufitmedia.com" email="info@nufitmedia.com">Adam Wilner</author>
 	
 	<gap:platform name="ios" />
 	<gap:platform name="android" />
