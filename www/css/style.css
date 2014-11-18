@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
 ion-side-menu-content .item-content { padding: 0 0 10px 0 !important; }
-ion-side-menu-content ion-item { width: 49.5% !important; margin-bottom: .5% !important; display: inline-block !important; } 
+ion-side-menu-content ion-item { width: 49.5% !important; margin-bottom: 1% !important; display: inline-block !important; vertical-align: top; } 
 ion-side-menu-content ion-item:nth-child(even) { margin-right: .5% !important; }
 ion-side-menu-content ion-item:nth-child(odd) { margin-left: .5% !important; }
 ion-side-menu-content ion-item:first-child { width: 100% !important; margin-left: 0 !important; }
