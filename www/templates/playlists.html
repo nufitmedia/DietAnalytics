@@ -10,7 +10,9 @@
 	    <ion-list type="card">
 	   		<ion-item ng-repeat="article in articles" item="article" href="#/app/playlists/{{playlist.id}}">
 	        		<img ng-src="http://static.dietanalytics.com{{article.img}}" width="100%">
-	    			<h3>{{article.title}}</h3>
+	    			<div class="mask">
+	    				<h3>{{article.title}}</h3>
+	    			</div>
 	    	</ion-item>
 	    </ion-list>
 	    <ion-infinite-scroll on-infinite="loadMore()" distance="10%"></ion-infinite-scroll>
