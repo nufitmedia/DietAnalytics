@@ -41,9 +41,9 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="com.phonegap.plugins.pushplugin" version="2.4.0" />
-    <gap:plugin name="nl.x-services.plugins.socialsharing" version="4.3.8" />
-    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+    <gap:plugin name="com.phonegap.plugins.pushplugin" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" />
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" />
 	    <param name="APP_ID" value="1479588148948758" />
 	    <param name="APP_NAME" value="dietAnalytics" />
 	</gap:plugin>
