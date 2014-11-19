@@ -74,4 +74,32 @@ angular.module('starter.controllers', [])
 .controller('ArticleCtrl', function($scope, $stateParams, Articles) {
 	$scope.article = Articles.get($stateParams.id);
 	$scope.myHTML = $scope.article.body;
+	
+	var message = $scope.article.meta_description;
+	var subject = $scope.article.name;
+	var link = "http://dietanalytics"+$scope.article.seo_url;
+	var image = "http://static.dietanalytics.com"+$scope.article.image_url;
+	
+	$scope.onShare = function() {
+	    window.plugins.socialsharing.share(message, subject, image, link);
+	};
+	$scope.twitterShare = function() {
+		window.plugins.socialsharing.shareViaTwitter(subject+': '+message, image, link);
+	};
+	$scope.facebookShare = function() {
+		window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(subject+': '+message, image, link, subject+' has been copied to your clipboard. Paste to post!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+	};
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
