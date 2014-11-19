@@ -8,6 +8,7 @@
     		<p>{{article.meta_description}}</p>
 			<button onclick="window.plugins.socialsharing.shareViaTwitter('Message and link via Twitter', null /* img */, 'http://www.x-services.nl')">msg and link via Twitter</button>
 			<button onclick="window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Message via Facebook', null /* img */, null /* url */, 'Paste it dude!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via Facebook (with errcallback)</button>
+			<button onclick="window.plugins.socialsharing.shareViaSMS('My cool message', null /* see the note below */, function(msg) {console.log('ok: ' + msg)}, function(msg) {alert('error: ' + msg)})">share via SMS</button>
 			<button onclick="window.plugins.socialsharing.canShareViaEmail(function(e){alert(e)}, function(e){alert(e)})">is Email available?</button>
     		<div ng-bind-html="myHTML"></div>
 		</div>
