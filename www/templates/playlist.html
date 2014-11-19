@@ -1,5 +1,14 @@
-<ion-view title="Article">
-  <ion-content class="has-header">
-    <h1>Articles</h1>
-  </ion-content>
+<ion-view title="DIET ANALYTICS">
+  	<ion-nav-buttons side="right">
+    	<button class="button button-icon icon ion-bookmark"></button>
+  	</ion-nav-buttons>
+  	<ion-content class="has-header">
+  		<div class="article">
+    		<h2>{{article.name}}</h2>
+    		<p>{{article.meta_description}}</p>
+    		<button class="button" ng-click="shareAnywhere()">Share anywhere</button>
+			<button class="button" ng-click="shareViaTwitter('some message', null, 'http://blog.nraboy.com')">Share on Twitter</button>
+    		<div ng-bind-html="myHTML"></div>
+		</div>
+  	</ion-content>
 </ion-view>

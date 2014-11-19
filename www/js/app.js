@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -58,14 +58,30 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     })
 
     .state('app.single', {
-      url: "/playlists/:playlistId",
+      url: "/playlists/:id",
       views: {
         'menuContent' :{
           templateUrl: "templates/playlist.html",
-          controller: 'PlaylistCtrl'
+          controller: 'ArticleCtrl'
         }
       }
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/playlists');
+});
+
+ionicApp.controller("ExampleController", function($scope, $cordovaSocialSharing) {
+ 
+    $scope.shareAnywhere = function() {
+        $cordovaSocialSharing.share("This is your message", "This is your subject", "www/imagefile.png", "http://blog.nraboy.com");
+    }
+ 
+    $scope.shareViaTwitter = function(message, image, link) {
+        $cordovaSocialSharing.canShareVia("twitter", message, image, link).then(function(result) {
+            $cordovaSocialSharing.shareViaTwitter(message, image, link);
+        }, function(error) {
+            alert("Cannot share on Twitter");
+        });
+    }
+ 
 });
