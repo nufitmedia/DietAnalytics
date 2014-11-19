@@ -6,7 +6,7 @@
         id        = "com.nufitmedia.dietanalytics"
         version   = "1.0.0">
 
-    <name>DietAnalytics</name>
+    <name>Diet Analytics</name>
 
     <description>DietAnalytics sample application.</description>
 
