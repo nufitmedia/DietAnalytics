@@ -13,7 +13,14 @@
 				<div class="col share twitter" ng-click="titterShare()">
 					<i class="ion-social-twitter"></i>
 				</div>
-				<div class="col share" ng-click="onShare()">Share</div>
+				<a class="col share pinterest" href="http://www.pinterest.com/pin/create/button/
+					?url=http://dietanalytics.com/articles/{{article.seo_url}}?orgin=app
+			        &media=http://static.dietanalytics.com{{article.image_url}}
+			        &description={{article.meta_description}}" 
+					target="_blank">
+			        	<i class="ion-social-pinterest"></i>
+				</a>
+				<div class="col share" ng-click="onShare()"><span>...</span></div>
 			</div>
 			<img ng-src="http://static.dietanalytics.com{{article.image_url}}" width="100%">
     		<div ng-bind-html="myHTML"></div>
@@ -24,8 +31,16 @@
 				<div class="col share twitter" ng-click="titterShare()">
 					<i class="ion-social-twitter"></i>
 				</div>
-				<div class="col share" ng-click="onShare()">Share</div>
+				<a class="col share pinterest" href="http://www.pinterest.com/pin/create/button/
+					?url=http://dietanalytics.com/articles/{{article.seo_url}}?orgin=app
+			        &media=http://static.dietanalytics.com{{article.image_url}}
+			        &description={{article.meta_description}}" 
+					target="_blank">
+			        	<i class="ion-social-pinterest"></i>
+				</a>
+				<div class="col share" ng-click="onShare()"><span>...</span></div>
 			</div>
+			<div class="fb-comments" data-href="http://dietanalytics.com/articles/{{article.seo_url}}" data-width="100%" data-colorscheme="light" data-mobile="true"></div>
 		</div>
   	</ion-content>
 </ion-view>
