@@ -1,5 +1,5 @@
 <ion-view title="DIET ANALYTICS">
-  	<ion-nav-buttons side="right">
+  	<ion-nav-buttons side="right" animation="no-animation">
   		<button class="button button-icon icon ion-bookmark" ng-hide="isBookmarked()" ng-click="bookmarkArticle()" style="color: #21639F !important;"></button>
   		<button class="button button-icon icon ion-bookmark" ng-show="isBookmarked()" ng-click="unbookmarkArticle()" style="color: #fb7e3b !important;"></button>
   	</ion-nav-buttons>
@@ -41,7 +41,7 @@
 				</a>
 				<div class="col share" ng-click="onShare()"><span>...</span></div>
 			</div>
-			<div class="fb-comments" data-href="http://dietanalytics.com/articles/{{article.seo_url}}" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
+			<div class="fb-comments" dyn-fb-comment-box page-href="http://dietanalytics.com/articles/{{article.seo_url}}" data-numposts="5" data-colorscheme="light" data-width="100%"></div>
 		</div>
   	</ion-content>
 </ion-view>
