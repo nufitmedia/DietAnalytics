@@ -89,8 +89,55 @@ angular.module('starter.controllers', [])
 	$scope.facebookShare = function() {
 		window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(subject+': '+message, image, link, subject+' has been copied to your clipboard. Paste to post!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
 	};
-});
+	$scope.bookmarkArticle = function(){
+		var bookmarks = JSON.parse(window.localStorage['bookmarks'] || '[]');
+		bookmarks.push($scope.article.id);
+		window.localStorage['bookmarks'] = JSON.stringify(bookmarks);
+	};
+	
+	
+	$scope.unbookmarkArticle = function(){
+		var bookmarks = JSON.parse(window.localStorage['bookmarks']);
+    	bookmarks.splice(bookmarks.indexOf($scope.article.id), 1);
+		window.localStorage['bookmarks'] = JSON.stringify(bookmarks);
+	};
+	
+	$scope.isBookmarked = function(){
+		var bookmarks = JSON.parse(window.localStorage['bookmarks'] || '[]');
+		if(bookmarks.indexOf($scope.article.id) > -1){
+			return true;
+		}else{
+			return false;
+		}
+	};
+})
 
+.controller('BookmarkCtrl', function($scope, Articles) {
+  
+  	$scope.data = {
+    	showDelete: false
+  	};
+  
+  	$scope.onItemDelete = function(bookmark) {
+  		var bookmarks = JSON.parse(window.localStorage['bookmarks']);
+  		console.log(bookmark);
+  		console.log(bookmarks);
+  		console.log(bookmarks.indexOf(bookmark.toString()));
+    	bookmarks.splice(bookmarks.indexOf(bookmark.toString()), 1);
+		window.localStorage['bookmarks'] = JSON.stringify(bookmarks);
+		$scope.bookmarks = [];
+	  	$.each(bookmarks, function(i, bookmark) {
+			$scope.bookmarks.push(Articles.get(bookmark));
+		});
+  	};
+  
+  	var bookmarks = JSON.parse(window.localStorage['bookmarks'] || '[]');
+  	$scope.bookmarks = [];
+  	$.each(bookmarks, function(i, bookmark) {
+		$scope.bookmarks.push(Articles.get(bookmark));
+	});
+    
+});
 
 
 

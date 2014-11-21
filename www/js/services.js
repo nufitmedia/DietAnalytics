@@ -17,7 +17,7 @@ angular.module('starter.services', [])
       // Simple index lookup
       return getObjects(articles, 'id', id)[0];
     }
-  }
+  };
 });
 
 function getObjects(obj, key, val) {

@@ -1,0 +1,25 @@
+<ion-view title="Bookmarks"id="bookmarks">
+	<ion-nav-buttons side="left">
+    	<button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  	</ion-nav-buttons>
+  	<ion-nav-buttons side="right">
+    	<button class="button button-icon icon ion-ios7-minus-outline" ng-click="data.showDelete = !data.showDelete;"></button>
+  	</ion-nav-buttons>
+  	<ion-content class="has-header">
+    	<ion-list show-delete="data.showDelete">
+	    	<ion-item ng-repeat="bookmark in bookmarks" item="bookmark" href="#/app/articles/{{bookmark.id}}">
+	    		<div class="row">
+	      			<div class="col col-50">
+	      				<img src="http://static.dietanalytics.com{{bookmark.image_url}}" width="100%">
+	      			</div>
+	      			<div class="col">
+	      				<h2>{{ bookmark.name }}</h2>
+				    	<p>{{ bookmark.meta_description }}</p>
+	      			</div>
+	      		</div>
+          		<ion-delete-button class="ion-minus-circled" ng-click="onItemDelete({{bookmark.id}})"></ion-delete-button>
+          		<ion-option-button class="button-assertive" ng-click="onItemDelete({{bookmark.id}})">Remove</ion-option-button>
+        	</ion-item>
+      	</ion-list>
+  	</ion-content>
+</ion-view>
