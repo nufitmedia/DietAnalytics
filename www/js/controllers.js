@@ -1,56 +1,47 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $http) {
   // Form data for the login modal
-  $scope.loginData = {};
+  $scope.searchData = {};
 
   // Create the login modal that we will use later
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('templates/search.html', {
     scope: $scope
   }).then(function(modal) {
     $scope.modal = modal;
   });
 
   // Triggered in the login modal to close it
-  $scope.closeLogin = function() {
+  $scope.closeSearch = function() {
     $scope.modal.hide();
   };
 
   // Open the login modal
-  $scope.login = function() {
+  $scope.search = function() {
     $scope.modal.show();
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doLogin = function() {
-    console.log('Doing login', $scope.loginData);
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 1000);
+  $scope.doSearch = function() {
+  	if($scope.searchData.query != ''){
+  		$http.get('http://api.nufitmedia.com/articles/searchName/22/word/'+$scope.searchData.query+'/format/json/start/0/limit/10').then(function(results) {
+			$scope.results = results.data;
+		});
+  	}
   };
 })
 
 
 
-.controller('ArticlesCtrl', function($scope, Articles) {
+.controller('ArticlesCtrl', function($scope, $http) {
 	var pageSize = 10;
    	$scope.articles = [];
   	$scope.loadMore = function() {
-    	var data = [];
     	var l = $scope.articles.length;
-    	$.each(Articles.all() , function(i, article) {
-    		if(i==0 && i==l){
-	    		data.push({ title: article.name, id: article.id, img: article.image_url, author: 'Adam Wilner' });
-	    	}else if(i >= l && i < l+pageSize){
-				data.push({ title: article.name, id: article.id, img: article.image_url });
-			}
-   		});
-
-    	$scope.articles = $scope.articles.concat(data);
-    	$scope.$broadcast('scroll.infiniteScrollComplete');
+    	$http.get('http://api.nufitmedia.com/articles/get_last_content/13/start/'+l+'/limit/'+pageSize+'/format/json').then(function(articles) {
+    		$scope.articles = $scope.articles.concat(articles.data);
+    		$scope.$broadcast('scroll.infiniteScrollComplete');
+    	});
   	};
 
   	$scope.$on('stateChangeSuccess', function() {
@@ -59,60 +50,54 @@ angular.module('starter.controllers', [])
   	
   	$scope.doRefresh = function() {
   		$scope.articles = [];
-	    $.each(Articles.all() , function(i, article) {
-	    	if(i==0){
-	    		$scope.articles.push({ title: article.name, id: article.id, img: article.image_url, author: 'Adam Wilner' });
-	    	}else if(i < pageSize){
-				$scope.articles.push({ title: article.name, id: article.id, img: article.image_url });
-			}
-   		});
-	    $scope.$broadcast('scroll.refreshComplete');
-	    $scope.$apply();
+  		$http.get('http://api.nufitmedia.com/articles/get_last_content/13/start/0/limit/'+pageSize+'/format/json').then(function(articles) {
+    		$scope.articles = articles.data;
+    		$scope.$broadcast('scroll.refreshComplete');
+	    	$scope.$apply();
+    	});
 	};
 })
 
-.controller('ArticleCtrl', function($scope, $stateParams, Articles) {
-	$scope.article = Articles.get($stateParams.id);
-	$scope.myHTML = $scope.article.body;
-	
-	var message = $scope.article.meta_description;
-	var subject = $scope.article.name;
-	var link = "http://dietanalytics"+$scope.article.seo_url;
-	var image = "http://static.dietanalytics.com"+$scope.article.image_url;
+.controller('ArticleCtrl', function($scope, $stateParams, $http) {
+	$http.get('http://api.nufitmedia.com/articles/articleId/'+$stateParams.id).then(function(article) {
+		$scope.article = article.data[0];
+		$scope.myHTML = $scope.article.body;
+		$scope.isBookmarked = JSON.parse(window.localStorage['bookmarks']).indexOf($scope.article.id) > -1;
+		
+		var message = $scope.article.meta_description;
+		var subject = $scope.article.name;
+		var link = "http://dietanalytics"+$scope.article.seo_url;
+		var image = "http://static.dietanalytics.com"+$scope.article.image_url;
+	});
 	
 	$scope.onShare = function() {
-	    window.plugins.socialsharing.share(message, subject, image, link);
+    	window.plugins.socialsharing.share(message, subject, image, link);
 	};
+	
 	$scope.twitterShare = function() {
 		window.plugins.socialsharing.shareViaTwitter(subject+': '+message, image, link);
 	};
+	
 	$scope.facebookShare = function() {
 		window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(subject+': '+message, image, link, subject+' has been copied to your clipboard. Paste to post!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
 	};
+	
 	$scope.bookmarkArticle = function(){
 		var bookmarks = JSON.parse(window.localStorage['bookmarks'] || '[]');
 		bookmarks.push($scope.article.id);
 		window.localStorage['bookmarks'] = JSON.stringify(bookmarks);
+		$scope.isBookmarked = true;
 	};
-	
 	
 	$scope.unbookmarkArticle = function(){
 		var bookmarks = JSON.parse(window.localStorage['bookmarks']);
     	bookmarks.splice(bookmarks.indexOf($scope.article.id), 1);
 		window.localStorage['bookmarks'] = JSON.stringify(bookmarks);
-	};
-	
-	$scope.isBookmarked = function(){
-		var bookmarks = JSON.parse(window.localStorage['bookmarks'] || '[]');
-		if(bookmarks.indexOf($scope.article.id) > -1){
-			return true;
-		}else{
-			return false;
-		}
+		$scope.isBookmarked = false;
 	};
 })
 
-.controller('BookmarkCtrl', function($scope, Articles) {
+.controller('BookmarkCtrl', function($scope, $http) {
   
   	$scope.data = {
     	showDelete: false
@@ -120,9 +105,6 @@ angular.module('starter.controllers', [])
   
   	$scope.onItemDelete = function(bookmark) {
   		var bookmarks = JSON.parse(window.localStorage['bookmarks']);
-  		console.log(bookmark);
-  		console.log(bookmarks);
-  		console.log(bookmarks.indexOf(bookmark.toString()));
     	bookmarks.splice(bookmarks.indexOf(bookmark.toString()), 1);
 		window.localStorage['bookmarks'] = JSON.stringify(bookmarks);
 		$scope.bookmarks = [];
@@ -134,7 +116,9 @@ angular.module('starter.controllers', [])
   	var bookmarks = JSON.parse(window.localStorage['bookmarks'] || '[]');
   	$scope.bookmarks = [];
   	$.each(bookmarks, function(i, bookmark) {
-		$scope.bookmarks.push(Articles.get(bookmark));
+  		$http.get('http://api.nufitmedia.com/articles/articleId/'+bookmark).then(function(article) {
+  			$scope.bookmarks.push(article.data[0]);
+  		});
 	});
     
 });
