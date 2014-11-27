@@ -58,11 +58,12 @@ angular.module('starter.controllers', [])
 	};
 })
 
-.controller('ArticleCtrl', function($scope, $stateParams, $http) {
+.controller('ArticleCtrl', function($scope, $stateParams, $http, $sce) {
 	$http.get('http://api.nufitmedia.com/articles/articleId/'+$stateParams.id).then(function(article) {
 		$scope.article = article.data[0];
 		$scope.myHTML = $scope.article.body;
 		$scope.isBookmarked = JSON.parse(window.localStorage['bookmarks']).indexOf($scope.article.id) > -1;
+		$scope.iframe_url = $sce.trustAsResourceUrl('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
 		
 		var message = $scope.article.meta_description;
 		var subject = $scope.article.name;
