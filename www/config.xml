@@ -45,7 +45,7 @@
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
 	    <param name="APP_ID" value="1479588148948758" />
-	    <param name="APP_NAME" value="dietAnalytics" />
+	    <param name="APP_NAME" value="DietAnalytics" />
 	</gap:plugin>
 	<gap:plugin name="com.adobe.plugins.gaplugin" version="2.3.1" />
 
