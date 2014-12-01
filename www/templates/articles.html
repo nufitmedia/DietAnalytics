@@ -9,14 +9,14 @@
   		<ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()"></ion-refresher>
 	    <ion-list type="card">
 	    	<ion-item ng-repeat-start="article in articles" ng-if="$first" item="article" href="#/app/articles/{{article.id}}" class="first">
-        		<img ng-src="http://static.dietanalytics.com{{article.image_url}}" width="100%">
+        		<img ng-src="http://static.dietanalytics.com{{article.image_url_small}}" width="100%">
     			<div class="mask">
     				<h3>{{article.name}}</h3>
     				<h4>{{article.authorName}}</h4>
     			</div>
 	    	</ion-item>
 	   		<ion-item ng-repeat-end="article in articles" ng-if="!$first" item="article" href="#/app/articles/{{article.id}}">
-        		<img ng-src="http://static.dietanalytics.com{{article.image_url}}" width="100%">
+        		<img ng-src="http://static.dietanalytics.com{{article.image_url_small}}" width="100%">
     			<h3>{{article.name}}</h3>
 	    	</ion-item>
 	    </ion-list>
