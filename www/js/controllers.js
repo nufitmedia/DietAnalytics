@@ -71,6 +71,10 @@ angular.module('starter.controllers', [])
 		$image = "http://static.dietanalytics.com"+$scope.article.image_url;
 	});
 	
+	$scope.commentsShow = function() {
+    	$('#comments').load('http://dietanalytics.com/comments.php?seo_url=what-to-know-before-eating-sushi.html');
+	};
+	
 	$scope.onShare = function() {
     	window.plugins.socialsharing.share($message, $subject, $image, $link);
 	};
