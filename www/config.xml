@@ -30,7 +30,7 @@
    	<preference name="SplashScreenDelay" 	      value="7000"/>
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
-    <preference name="android-minSdkVersion"      value="" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
+    <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
 
     <!-- Plugins -->
@@ -42,14 +42,22 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="com.phonegap.plugins.pushplugin" />
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
 	    <param name="APP_ID" value="1479588148948758" />
 	    <param name="APP_NAME" value="DietAnalytics" />
 	</gap:plugin>
 	<gap:plugin name="com.adobe.plugins.gaplugin" />
+	
+	<!-- Core plugins -->
+    <gap:plugin name="org.apache.cordova.console" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.vibration" />
+
+    <!-- Pushwoosh plugin -->
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.4.1" />
 
 
     <!-- Define app icon for each platform. -->
@@ -92,6 +100,5 @@
     </gap:config-file>
 
     <access origin="*"/> <!-- allow all pages, use for development -->
-	<access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
     
 </widget>
