@@ -42,13 +42,13 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.file" />
-    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" version="3.0.2" />
+    <gap:plugin name="com.pushwoosh.plugins.pushwoosh" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
-    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0">
+    <gap:plugin name="com.phonegap.plugins.facebookconnect">
 	    <param name="APP_ID" value="1479588148948758" />
 	    <param name="APP_NAME" value="DietAnalytics" />
 	</gap:plugin>
-	<gap:plugin name="com.adobe.plugins.gaplugin" version="2.3.1" />
+	<gap:plugin name="com.adobe.plugins.gaplugin" />
 
 
     <!-- Define app icon for each platform. -->
