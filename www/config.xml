@@ -27,7 +27,7 @@
     <preference name="detect-data-types"          value="true" />           <!-- ios: controls whether data types (such as phone no. and dates) are automatically turned into links by the system -->
     <preference name="exit-on-suspend"            value="false" />          <!-- ios: if set to true, app will terminate when home button is pressed -->
     <preference name="show-splash-screen-spinner" value="false" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
-   	<preference name="SplashScreenDelay" 	  value="10000"/>
+   	<preference name="SplashScreenDelay" 	      value="7000"/>
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
     <preference name="android-minSdkVersion"      value="" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
@@ -42,6 +42,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.file" />
+    <gap:plugin name="com.phonegap.plugins.pushplugin" />
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh" />
     <gap:plugin name="nl.x-services.plugins.socialsharing" />
     <gap:plugin name="com.phonegap.plugins.facebookconnect">
