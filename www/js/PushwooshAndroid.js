@@ -1,4 +1,4 @@
-ioni/*
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -25,12 +25,16 @@ function registerPushwooshAndroid() {
 	document.addEventListener('push-notification',
 		function(event)
 		{
-            var page = event.notification.u.page;
+            var title = event.notification.title;
+            var userData = event.notification.userdata;
 
             //dump custom data to the console if it exists
-            if(typeof(page) != "undefined") {
-				window.open('#/app/articles/'+page, '_self');
+            if(typeof(userData) != "undefined") {
+				alert('user data: ' + JSON.stringify(userData));
 			}
+
+			//and show alert
+			alert(title);
 
 			//stopping geopushes
 			//pushNotification.stopGeoPushes();
