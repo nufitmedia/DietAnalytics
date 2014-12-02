@@ -90,6 +90,7 @@
     	<string>100</string>
     </gap:config-file>
 
-    <access origin="*"/>
+    <access origin="*"/> <!-- allow all pages, use for development -->
+	<access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->
     
 </widget>
