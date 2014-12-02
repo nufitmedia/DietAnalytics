@@ -63,13 +63,17 @@ angular.module('starter.controllers', [])
 		$scope.article = article.data[0];
 		$scope.body = $scope.article.body;
 		$scope.isBookmarked = JSON.parse(window.localStorage['bookmarks']).indexOf($scope.article.id) > -1;
-		$scope.comments = $('#comments').load('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
+		$scope.iframe_url = $sce.trustAsResourceUrl('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
 		
 		$message = $scope.article.meta_description;
 		$subject = $scope.article.name;
 		$link = "http://dietanalytics"+$scope.article.seo_url;
 		$image = "http://static.dietanalytics.com"+$scope.article.image_url;
 	});
+	
+	$scope.commentsShow = function() {
+    	$('#comments').load('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
+	};
 	
 	$scope.onShare = function() {
     	window.plugins.socialsharing.share($message, $subject, $image, $link);

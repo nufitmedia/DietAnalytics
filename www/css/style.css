@@ -30,3 +30,4 @@ ion-side-menu ion-content .ion-item { border-top: 0 !important; margin: 0; }
 #bookmarks h2 { white-space: normal; }
 .ion-bookmark { font-size: 32px !important; cursor: pointer; }
 #search ion-content { background-color: #fff; }
+#comments { width: 100%; background-color: #0000CC; color: #fff;  }
