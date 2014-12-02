@@ -62,25 +62,3 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ngCordova'])
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/articles');
 });
-
-Ext.define('app', {
- 
-    singleton: true,
- 
-    initPushwoosh: function(){
- 
-        var pushNotification = window.plugins.pushNotification;
- 
-        if(Ext.os.is.Android){
-            registerPushwooshAndroid();
-        }
- 
-        if(Ext.os.is.iOS){
-            registerPushwooshIOS();
-        }
- 
-        pushNotification.onDeviceReady();
- 
-    }
- 
-});

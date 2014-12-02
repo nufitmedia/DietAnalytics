@@ -61,19 +61,15 @@ angular.module('starter.controllers', [])
 .controller('ArticleCtrl', function($scope, $stateParams, $http, $sce) {
 	$http.get('http://api.nufitmedia.com/articles/articleId/'+$stateParams.id).then(function(article) {
 		$scope.article = article.data[0];
-		$scope.myHTML = $scope.article.body;
+		$scope.body = $scope.article.body;
 		$scope.isBookmarked = JSON.parse(window.localStorage['bookmarks']).indexOf($scope.article.id) > -1;
-		$scope.iframe_url = $sce.trustAsResourceUrl('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
+		$scope.comments = $('#comments').load('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
 		
 		$message = $scope.article.meta_description;
 		$subject = $scope.article.name;
 		$link = "http://dietanalytics"+$scope.article.seo_url;
 		$image = "http://static.dietanalytics.com"+$scope.article.image_url;
 	});
-	
-	$scope.commentsShow = function() {
-    	$('#comments').load('http://dietanalytics.com/comments.php?seo_url=what-to-know-before-eating-sushi.html');
-	};
 	
 	$scope.onShare = function() {
     	window.plugins.socialsharing.share($message, $subject, $image, $link);
