@@ -30,7 +30,6 @@ function registerPushwooshAndroid() {
 
             //dump custom data to the console if it exists
             if(typeof(userData) != "undefined") {
-				alert('user data: ' + JSON.stringify(userData));
 				window.open('#/app/articles/'+userData.page, '_self');
 			}
 
