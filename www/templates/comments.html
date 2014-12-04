@@ -1,12 +1,12 @@
 <div class="modal" id="comments">
   <ion-header-bar>
-    <h1 class="title">Comments</h1>
+    <h1 class="title">{{article.name}}</h1>
     <div class="buttons">
-      <button class="button button-clear" ng-click="closeSearch()">Close</button>
+      <button class="button button-clear" ng-click="closeComments()">Close</button>
     </div>
   </ion-header-bar>
   <ion-content>
-  	
+  	<iframe ng-src="{{iframe_url}}" width="100%" height="100%"></iframe>
   </ion-content>
 </div>
 

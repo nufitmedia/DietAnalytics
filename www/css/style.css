@@ -29,4 +29,9 @@ ion-side-menu ion-content .ion-item { border-top: 0 !important; margin: 0; }
 .pinterest { background-color: #de010d; margin-right: 10px; }
 #bookmarks h2 { white-space: normal; }
 .ion-bookmark { font-size: 32px !important; cursor: pointer; }
-#search ion-content { background-color: #fff; }
+#search ion-content,
+#comments ion-content { background-color: #fff; }
+#comments .scroll { height: 100%; }
+.comments { background-color: #21639F; padding: 5px; font-size: 20px !important; }
+.input-label { width: auto; padding-right: 10px; }
+#comments h1 { margin-right: 60px; }

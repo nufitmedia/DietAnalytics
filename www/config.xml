@@ -50,7 +50,6 @@
 	<gap:plugin name="com.adobe.plugins.gaplugin" />
 	
 	<!-- Core plugins -->
-    <gap:plugin name="org.apache.cordova.console" />
     <gap:plugin name="org.apache.cordova.device-orientation" />
     <gap:plugin name="org.apache.cordova.inappbrowser" />
     <gap:plugin name="org.apache.cordova.network-information" />
