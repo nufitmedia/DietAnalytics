@@ -63,23 +63,22 @@ angular.module('starter.controllers', [])
 		$scope.isBookmarked = JSON.parse(window.localStorage['bookmarks']).indexOf($scope.article.id) > -1;
 		$scope.iframe_url = $sce.trustAsResourceUrl('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
 		
-		$message = $scope.article.meta_description;
-		$subject = $scope.article.name;
-		$link = "http://dietanalytics"+$scope.article.seo_url;
-		$image = "http://static.dietanalytics.com"+$scope.article.image_url;
+		//$message = $scope.article.meta_description;
+		//$subject = $scope.article.name;
+		//$link = "http://dietanalytics"+$scope.article.seo_url;
+		//$image = "http://static.dietanalytics.com"+$scope.article.image_url;
 	});
 	
 	$scope.onShare = function() {
-    	window.plugins.socialsharing.share($scope.article.meta_description, 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
-    	//window.plugins.socialsharing.share($message, $subject, $image, $link);
+    	window.plugins.socialsharing.share($scope.article.meta_description, $scope.article.name, "http://static.dietanalytics.com"+$scope.article.image_url, "http://dietanalytics"+$scope.article.seo_url);
 	};
 	
 	$scope.twitterShare = function() {
-		window.plugins.socialsharing.shareViaTwitter($subject+': '+$message, $image, $link);
+		window.plugins.socialsharing.shareViaTwitter($scope.article.name+': '+$scope.article.meta_description, "http://static.dietanalytics.com"+$scope.article.image_url, "http://dietanalytics"+$scope.article.seo_url);
 	};
 	
 	$scope.facebookShare = function() {
-		window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($subject+': '+$message, $image, $link, $subject+' has been copied to your clipboard. Paste to post!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+		window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.article.name+': '+$scope.article.meta_description, "http://static.dietanalytics.com"+$scope.article.image_url, "http://dietanalytics"+$scope.article.seo_url, scope.article.name+' has been copied to your clipboard. Paste to post!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
 	};
 	
 	$scope.bookmarkArticle = function(){
