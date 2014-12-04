@@ -7,7 +7,6 @@
   		<div class="article">
     		<h2>{{article.name}}</h2>
     		<p>{{article.meta_description}}</p>
-    		<button onclick="window.plugins.socialsharing.share('Message, subject, image and link', 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')">message, subject, image and link</button>
     		<div class="row">
 	    		<div class="col share facebook" ng-click="facebookShare()">
 	    			<i class="ion-social-facebook"></i>
@@ -22,7 +21,7 @@
 					target="_blank">
 			        	<i class="ion-social-pinterest"></i>
 				</a>
-				<div class="col share" ng-click="onShare()"><span>...</span></div>
+				<div class="col share" onclick="window.plugins.socialsharing.share('Message, subject, image and link', 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl')"><span>...</span></div>
 			</div>
 			<img ng-src="http://static.dietanalytics.com{{article.image_url}}" width="100%">
     		<div ng-bind-html="body"></div>
