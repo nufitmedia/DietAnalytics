@@ -79,7 +79,8 @@ angular.module('starter.controllers', [])
 	};
 	
 	$scope.facebookShare = function() {
-		window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+		window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('Message via Facebook', null /* img */, null /* url */, 'Paste it dude!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
+		//window.plugins.socialsharing.shareViaFacebook($scope.article.name+': '+$scope.article.meta_description+' - '+"http://dietanalytics"+$scope.article.seo_url,  "http://static.dietanalytics.com"+$scope.article.image_url, "http://dietanalytics"+$scope.article.seo_url, function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
 		//window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint($scope.article.name+': '+$scope.article.meta_description, "http://static.dietanalytics.com"+$scope.article.image_url, "http://dietanalytics"+$scope.article.seo_url, scope.article.name+' has been copied to your clipboard. Paste to post!', function() {console.log('share ok')}, function(errormsg){alert(errormsg)});
 	};
 	
