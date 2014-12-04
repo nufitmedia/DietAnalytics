@@ -61,7 +61,6 @@ angular.module('starter.controllers', [])
 		$scope.article = article.data[0];
 		$scope.body = $scope.article.body;
 		$scope.isBookmarked = JSON.parse(window.localStorage['bookmarks']).indexOf($scope.article.id) > -1;
-		$scope.iframe_url = $sce.trustAsResourceUrl('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
 		
 		//$message = $scope.article.meta_description;
 		//$subject = $scope.article.name;
@@ -108,6 +107,7 @@ angular.module('starter.controllers', [])
 	
 	// Open the login modal
 	$scope.showComments = function() {
+		$scope.iframe_url = $sce.trustAsResourceUrl('http://dietanalytics.com/comments.php?seo_url='+$scope.article.seo_url);
 	    $scope.comments.show();
 	};
 })
