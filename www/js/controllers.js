@@ -74,8 +74,7 @@ angular.module('starter.controllers', [])
 	};
 	
 	$scope.twitterShare = function() {
-		//window.plugins.socialsharing.shareViaTwitter($scope.article.name+': '+$scope.article.meta_description, "http://static.dietanalytics.com"+$scope.article.image_url, "http://dietanalytics"+$scope.article.seo_url);
-		window.plugins.socialsharing.shareViaTwitter('Message and link via Twitter', null /* img */, 'http://www.x-services.nl');
+		window.plugins.socialsharing.shareViaTwitter($scope.article.name+': '+$scope.article.meta_description, "http://static.dietanalytics.com"+$scope.article.image_url,  "http://dietanalytics"+$scope.article.seo_url);
 	};
 	
 	$scope.facebookShare = function() {
