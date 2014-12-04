@@ -24,7 +24,7 @@
 				<div class="col share" ng-click="onShare()"><span>...</span></div>
 			</div>
 			<img ng-src="http://static.dietanalytics.com{{article.image_url}}" width="100%">
-    		<div ng-bind-html="body"></div>
+    		<div ng-bind-html="myHTML"></div>
     		<div class="row">
 	    		<div class="col share facebook" ng-click="facebookShare()">
 	    			<i class="ion-social-facebook"></i>
@@ -41,7 +41,7 @@
 				</a>
 				<div class="col share" ng-click="onShare()"><span>...</span></div>
 			</div>
-			<div class="share comments" ng-click="showComments()"><i class="ion-ios7-chatboxes"></i> View Comments</div>
+			<iframe ng-src="{{iframe_url}}" width="100%"></iframe>
 		</div>
   	</ion-content>
 </ion-view>
