@@ -70,7 +70,7 @@ angular.module('starter.controllers', [])
 	});
 	
 	$scope.onShare = function() {
-    	window.plugins.socialsharing.share($message, 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
+    	window.plugins.socialsharing.share($scope.article.meta_description, 'The subject', 'https://www.google.nl/images/srpr/logo4w.png', 'http://www.x-services.nl');
     	//window.plugins.socialsharing.share($message, $subject, $image, $link);
 	};
 	
